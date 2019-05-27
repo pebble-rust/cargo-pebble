@@ -3,5 +3,18 @@ name = "cargo-pebble"
 version = "0.1.0"
 authors = ["RoccoDev <hey@rocco.dev>"]
 edition = "2018"
+description = "Pebble project management for Cargo."
+repository = "https://github.com/pebble-rust/cargo-pebble"
+readme = "README.md"
+keywords = ["pebble", "watch", "cargo", "rebble", "arm"]
+categories = ["embedded", "development-tools::cargo-plugins", "hardware-support", "external-ffi-bindings"]
+license = "MIT"
+include = [
+    "src/**/*.rs",
+    "Cargo.toml",
+]
+
+[badges]
+travis-ci = { repository = "pebble-rust/cargo-pebble", branch = "master" }
 
 [dependencies]
