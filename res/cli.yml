@@ -1,0 +1,12 @@
+name: cargo-pebble
+bin_name: cargo pebble
+version: "1.0"
+author: RoccoDev <hey@rocco.dev>
+about: Pebble project management for Cargo.
+subcommands:
+  - new:
+      about: Creates a new Pebble project.
+  - build:
+      about: Builds the project in the working directory.
+  - install:
+      about: Builds and installs the project in the working directory.
