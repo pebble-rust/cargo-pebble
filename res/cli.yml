@@ -6,7 +6,13 @@ about: Pebble project management for Cargo.
 subcommands:
   - new:
       about: Creates a new Pebble project.
+      args:
+        - name:
+            short: name
+            help: The name of the project.
   - build:
       about: Builds the project in the working directory.
   - install:
       about: Builds and installs the project in the working directory.
+  - prepare:
+      about: Prepares the system for building Pebble projects.
