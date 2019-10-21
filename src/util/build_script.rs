@@ -63,8 +63,11 @@ pub fn run_build() -> CommandResult<CommandError> {
     fs_extra::move_items(&move_paths, crates_dir.to_str().unwrap(),
                          &fs_extra::dir::CopyOptions::new());
 
+    let deps_path = crate_path.join(Path::new("target/release/deps"));
+    let deps_path = deps_path.to_str().unwrap();
+
     println!("Preparing Pebble build...");
-    std::env::set_current_dir(deps_dir);
+    std::env::set_current_dir(&deps_dir);
     run_cmd("sh", &["-c", "ar x *.a"])?;
     run_cmd("sh", &["-c", "find . -type f ! -name '*.rcgu.o' -delete"])?;
     run_cmd("sh", &["-c", format!("find . -type f -name '{}*.o' -delete", crate_name).as_str()])?;
@@ -78,7 +81,8 @@ pub fn run_build() -> CommandResult<CommandError> {
     let rustc_str = rustc_dir.to_str().unwrap();
 
     println!("Finalizing Rust build...");
-    run_cmd("rustc", &["+nightly","-L",crates_dir.to_str().unwrap(),"--color","always","--emit=llvm-ir","--crate-type=staticlib",
+    run_cmd("rustc", &["+nightly", "-L", crates_dir.to_str().unwrap(), "-L", deps_path,
+        "--color","always","--emit=llvm-ir","--crate-type=staticlib",
         "--target","thumbv7m-none-eabi",format!("{}/src/lib.rs", crate_path.to_str().unwrap()).as_str(),
         "-A","dead-code","-o", format!("{}/lib.ll", rustc_str).as_str()])?;
 
