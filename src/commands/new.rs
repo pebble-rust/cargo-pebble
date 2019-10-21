@@ -7,7 +7,7 @@ use clap::ArgMatches;
 use crate::commands::CommandResult;
 use crate::errors::CommandError;
 
-pub fn run(args: ArgMatches) -> CommandResult<CommandError> {
+pub fn run(args: &ArgMatches) -> CommandResult<CommandError> {
     let proj_name = args.value_of("name");
 
     if let Some(name) = proj_name {

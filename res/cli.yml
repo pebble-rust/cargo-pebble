@@ -1,18 +1,28 @@
 name: cargo-pebble
-bin_name: cargo pebble
+bin_name: cargo
 version: "1.0"
 author: RoccoDev <hey@rocco.dev>
 about: Pebble project management for Cargo.
 subcommands:
-  - new:
-      about: Creates a new Pebble project.
-      args:
-        - name:
-            short: name
-            help: The name of the project.
-  - build:
-      about: Builds the project in the working directory.
-  - install:
-      about: Builds and installs the project in the working directory.
-  - prepare:
-      about: Prepares the system for building Pebble projects.
+  - pebble:
+      subcommands:
+        - new:
+            about: Creates a new Pebble project.
+            args:
+              - name:
+                  short: name
+                  help: The name of the project.
+        - build:
+            about: Builds the project in the working directory.
+        - run:
+            about: Builds and runs the project in the working directory.
+            args:
+              - emulator:
+                  short: emulator
+                  help: The emulator used to run the app.
+                  takes_value: true
+              - logs:
+                  short: logs
+                  help: Whether logs should be printed to the console.
+        - prepare:
+            about: Prepares the system for building Pebble projects.

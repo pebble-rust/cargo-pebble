@@ -10,6 +10,6 @@ use crate::commands::CommandResult;
 use crate::errors::{CommandError};
 use crate::util::build_script::run_build;
 
-pub fn run(args: ArgMatches) -> CommandResult<CommandError> {
+pub fn run(args: &ArgMatches) -> CommandResult<CommandError> {
     run_build()
 }

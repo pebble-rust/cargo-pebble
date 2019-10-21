@@ -116,7 +116,7 @@ fn run_cmd<'a>(cmd: &'a str, args: &[&str]) -> CommandResult<CommandError> {
     Ok(())
 }
 
-fn print_stderr(output: Output) {
+pub fn print_stderr(output: Output) {
     String::from_utf8(output.stderr).unwrap()
         .lines()
         .for_each(|l| println!("{}", l));
