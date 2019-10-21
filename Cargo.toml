@@ -12,6 +12,7 @@ license = "MIT"
 include = [
     "src/**/*.rs",
     "Cargo.toml",
+    "res/cli.yml"
 ]
 
 [badges]
